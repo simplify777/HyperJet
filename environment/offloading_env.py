@@ -210,9 +210,6 @@ class OffloadingEnvironment(gym.Env):
         return self.state, self.info
 
     def step(self, action):
-        # === 真正的总进水口数据清洗 ===
-        action = int(action) % 4
-        # ==============================
         assert not self._terminated, "One episodic has terminated"
         self._state, self._reward = self._get_next_obs(action)
         self._num_steps += 1
