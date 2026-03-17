@@ -3,6 +3,7 @@ import os
 import random
 from types import SimpleNamespace
 from tqdm import tqdm
+import kahypar
 import heapq
 
 
@@ -323,12 +324,6 @@ class Hypergraph():
                     # self._append_edge(SimpleNamespace(**new_edge), USE_HG_EDGE[2])
                     edges_2.append(SimpleNamespace(**new_edge))
 
-        if USE_HG_EDGE[-1]:
-            try:
-                import kahypar
-            except ImportError:
-                print("[WARNING] kahypar is not installed (not supported on Windows natively). Skipping hypergraph partitioning edges.")
-                USE_HG_EDGE[-1] = False
         if USE_HG_EDGE[-1]:
             with DisablePrint():
                 context = kahypar.Context()

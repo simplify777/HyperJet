@@ -40,8 +40,6 @@ class Resources(object):
         :param resource_id: Resource pool node
         :return: Time of execution
         """
-        # print(f"\n[DEBUG 抓包] 尝试访问的 resource_id: {resource_id}, 但系统总共有 {len(self.resources)} 个资源")
-
         resource = self.resources[resource_id]
         return task.num_operation * BASE_INT / resource["cpu_frequency"] / MS2S
 
@@ -51,7 +49,6 @@ class Resources(object):
         :param resource_id: Resource pool node
         :return: Energy of execution
         """
-
         resource = self.resources[resource_id]
         # return self.get_time(task, resource_id) * resource["cpu_frequency"] ** 3 * resource["cpu_energy_coefficient"]
         return self.get_time(task, resource_id) * resource["cpu_energy_coefficient"]
